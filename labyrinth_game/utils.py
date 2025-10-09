@@ -30,9 +30,8 @@ def describe_current_room(game_state):
 
 def solve_puzzle(game_state):
     '''
-    Сначала проверьте, есть ли загадка в текущей комнате. Если нет, выведите сообщение  и завершите выполнение функции.
-    Если загадка есть, выведите на экран вопрос.
-    Получите ответ от пользователя.
+    Если загадка есть, выводит на экран вопрос.
+    Получает ответ от пользователя.
     '''
     puzzle = consts.ROOMS.get(game_state.get('current_room')).get('puzzle')
     if puzzle == None:
@@ -125,8 +124,7 @@ def trigger_trap(game_state):
 
 def random_event(game_state):
     '''
-    Создаем небольшие случайные события, которые происходят во время перемещения игрока.
-    Эту функцию следует вызывать в move_player() после каждого успешного перемещения в новую комнату.
+    Создаем случайные события, после перемещения в комнату.
     '''
     seed = game_state.get('steps_taken')
     event_probability = pseudo_random(seed, 10)

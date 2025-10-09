@@ -13,7 +13,6 @@ game_state = {
 def process_command(game_state, command):
     '''
     Обработка команд.
-    В цикле while в функции main() вызывайте process_command для каждой введенной пользователем строки.
     '''
     parsed_command = command.split()
     match parsed_command[0]:
@@ -47,7 +46,7 @@ def process_command(game_state, command):
 
 def main():
     '''
-    Главная функция
+    Главная функция.
     '''
     global game_state
     print("Добро пожаловать в Лабиринт сокровищ!")
