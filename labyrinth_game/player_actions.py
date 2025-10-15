@@ -11,7 +11,8 @@ def show_inventory(game_state):
         case 0:
             print('Инвентарь пуст!')
         case _:
-            print(f'У вас в инвентаре:\n{', '.join(inventory_list)}')
+            inventory_sting = ', '.join(inventory_list)
+            print(f'У вас в инвентаре:\n{inventory_sting}')
     return game_state
 
 def get_input(prompt="> "):

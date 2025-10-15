@@ -24,7 +24,7 @@ def describe_current_room(game_state):
     exits = room.get('exits')
     print(f"Выходы: {', '.join(exits)}")
     puzzle = room.get('puzzle')
-    if puzzle != None:
+    if puzzle is not None:
         print("Кажется, здесь есть загадка(используйте команду solve).")
     return game_state
 
@@ -34,7 +34,7 @@ def solve_puzzle(game_state):
     Получает ответ от пользователя.
     '''
     puzzle = consts.ROOMS.get(game_state.get('current_room')).get('puzzle')
-    if puzzle == None:
+    if puzzle is None:
         print("Загадок здесь нет.")
         return game_state
     puzzle_text, answer = puzzle
