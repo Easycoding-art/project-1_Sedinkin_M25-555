@@ -52,11 +52,11 @@ def solve_puzzle(game_state):
     consts.ROOMS[game_state.get('current_room')]['puzzle'] = None
     match game_state.get('current_room'):
         case 'hall':
-            game_state['player_inventory'].append('treasure key')
-            print(f"Вы получили: {'treasure key'}") 
+            game_state['player_inventory'].append('treasure_key')
+            print(f"Вы получили: {'treasure_key'}") 
         case 'library':
-            game_state['player_inventory'].append('rusty key')
-            print(f"Вы получили: {'rusty key'}")
+            game_state['player_inventory'].append('rusty_key')
+            print(f"Вы получили: {'rusty_key'}")
         case _:
             pass
     return game_state
@@ -67,12 +67,12 @@ def attempt_open_treasure(game_state):
     '''
     items = consts.ROOMS.get(game_state.get('current_room')).get('items')
     inventory = game_state.get('player_inventory')
-    if 'treasure chest' not in items:
+    if 'treasure_chest' not in items:
         print("Сундук уже открыт или отсутствует..")
         return game_state
-    if 'treasure key' in inventory or 'rusty key' in inventory:
+    if 'treasure_key' in inventory or 'rusty_key' in inventory:
         print('Вы применяете ключ, и замок щёлкает. Сундук открыт!')
-        consts.ROOMS[game_state.get('current_room')]['items'].remove('treasure chest')
+        consts.ROOMS[game_state.get('current_room')]['items'].remove('treasure_chest')
         print("В сундуке сокровище! Вы победили!")
         game_state['game_over'] = True
         return game_state
@@ -86,7 +86,7 @@ def attempt_open_treasure(game_state):
                 print("Неверно.")
             else:
                 print('Сундук открыт!')
-                consts.ROOMS[game_state.get('current_room')]['items'].remove('treasure chest')
+                consts.ROOMS[game_state.get('current_room')]['items'].remove('treasure_chest')
                 print("В сундуке сокровище! Вы победили!")
                 game_state['game_over'] = True
         case 'нет':
@@ -124,7 +124,7 @@ def trigger_trap(game_state):
 
 def random_event(game_state):
     '''
-    Создаем случайные события, после перемещения в комнату.
+    Создаем случайные события после перемещения в комнату.
     '''
     seed = game_state.get('steps_taken')
     event_probability = pseudo_random(seed, 10)
@@ -133,7 +133,7 @@ def random_event(game_state):
     event_number = pseudo_random(seed, 2)
     match event_number:
         case 1:
-            game_state['player_inventory'].append('coin')
+            consts.ROOMS[game_state.get('current_room')]['items'].append('coin')
             print("Вы нашли монету.")
         case 2:
             print('Послышался шорох...')

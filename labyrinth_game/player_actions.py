@@ -32,11 +32,12 @@ def move_player(game_state, direction):
     if direction in exits.keys():
         next_room = exits.get(direction)
         if next_room == 'treasure_room':
-            if 'rusty key' in game_state['player_inventory']:
-                game_state['player_inventory'].remove('rusty key')
+            if 'rusty_key' in game_state['player_inventory']:
+                game_state['player_inventory'].remove('rusty_key')
                 print("Вы используете найденный ключ, чтобы открыть путь в комнату сокровищ.")
             else:
                 print("Дверь заперта. Нужен ключ, чтобы пройти дальше.")
+                return game_state
         game_state['current_room'] = next_room
         game_state['steps_taken'] +=1
         game_state = utils.describe_current_room(game_state)
@@ -74,12 +75,12 @@ def use_item(game_state, item_name):
                 print('Cтало гораздо светлее.')
             case 'sword':
                 print('Ты чувствуешь себя намного увереннее')
-            case 'bronze box':
+            case 'bronze_box':
                 print('Шкатулка открыта!')
                 if item_name not in game_state['player_inventory']:
-                    game_state['player_inventory'].append('rusty key')
+                    game_state['player_inventory'].append('rusty_key')
                     print('Ты нашел ключ.')
-                game_state['player_inventory'].remove('bronze box')
+                game_state['player_inventory'].remove('bronze_box')
             case _:
                 print('Я не знаю, что с этим делать...')
     return game_state
