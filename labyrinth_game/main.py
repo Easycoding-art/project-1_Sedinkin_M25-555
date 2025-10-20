@@ -6,6 +6,7 @@ import labyrinth_game.utils as utils
 game_state = {
     'player_inventory': [], # Инвентарь игрока
     'current_room': 'entrance', # Текущая комната
+    'treasure_room_status': False, # Значения отокрытости сокровищницы
     'game_over': False, # Значения окончания игры
     'steps_taken': 0 # Количество шагов
 }

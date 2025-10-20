@@ -31,9 +31,10 @@ def move_player(game_state, direction):
     exits = consts.ROOMS.get(game_state.get('current_room')).get('exits')
     if direction in exits.keys():
         next_room = exits.get(direction)
-        if next_room == 'treasure_room':
+        if next_room == 'treasure_room' and game_state.get('treasure_room_status'):
             if 'rusty_key' in game_state['player_inventory']:
                 game_state['player_inventory'].remove('rusty_key')
+                game_state['treasure_room_status'] = True
                 print("Вы используете найденный ключ, чтобы открыть путь в комнату сокровищ.")
             else:
                 print("Дверь заперта. Нужен ключ, чтобы пройти дальше.")
